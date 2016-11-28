@@ -9,5 +9,7 @@ target 'SquaresApp' do
 
   pod 'Firebase/Core'
   pod 'Firebase/AdMob'
+  pod 'SnapKit'
+  pod 'OAStackView'
 
 end

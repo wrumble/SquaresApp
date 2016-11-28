@@ -14,8 +14,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        if let window = window {
+            window.backgroundColor = UIColor.white
+            window.rootViewController = SquaresViewController()
+            window.makeKeyAndVisible()
+        }
+        
         GADMobileAds.configure(withApplicationID: "ca-app-pub-9402251834571012~1597808284")
         // Override point for customization after application launch.
         return true
@@ -45,4 +52,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-

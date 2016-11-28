@@ -10,6 +10,6 @@ import UIKit
 
 class SquaresCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet var number: UILabel!
+    var number = UILabel(frame: CGRect.zero)
     
 }

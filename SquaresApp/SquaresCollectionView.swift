@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SquaresDataSource: NSObject, UICollectionViewDataSource {
+class SquaresCollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let numberOfSquares = arc4random_uniform(40) + 9
@@ -23,14 +23,20 @@ class SquaresDataSource: NSObject, UICollectionViewDataSource {
                                                    blue: CGFloat(Double(arc4random_uniform(101)) / 100.0),
                                                    alpha: 1.0)
         let number = Int(arc4random_uniform(100))
+        cell.addSubview(cell.number)
+        cell.number.snp.makeConstraints { make in
+            make.edges.equalTo(cell.snp.edges)
+        }
         cell.number.text = "\(number)"
         cell.number.textColor = cell.contentView.backgroundColor
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)!
-        cell.contentView.backgroundColor! = UIColor.lightGray
+        let cell = collectionView.cellForItem(at: indexPath)! as! SquaresCollectionViewCell
+        cell.contentView.backgroundColor = .lightGray
+        cell.number.textColor = .black
+        cell.number.textAlignment = .center
         collectionView.deselectItem(at: indexPath, animated: false)
     }
 }

@@ -9,7 +9,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>OAStackView-OAStackView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>OAStackView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SquaresApp.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SnapKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,7 +37,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>61F409CA358441E7FCB892C82ACD0F77</key>
+		<key>36EB4E39F3BF080528CA5CA69ABA2350</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>402487D0876C3BFE5F2927D78EFF2444</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A20B7EBE053FD14D283DA0966A3275D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FEA01B1FB4CA55B8E882AC9EF806DF0D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

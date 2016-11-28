@@ -7,35 +7,185 @@
 //
 
 import UIKit
+import StoreKit
+import OAStackView
+import SnapKit
 import GoogleMobileAds
 
-class SquaresViewController: UIViewController, UICollectionViewDelegate {
+class SquaresViewController: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
-    let squaresDataSource = SquaresDataSource()
+    let defaults = UserDefaults.standard
+    let stackView = OAStackView(frame: CGRect.zero)
+    let titleView = TitleView(frame: CGRect.zero)
+    let bannerView = BannerView(frame: CGRect.zero)
+    let removeAdsView = RemoveAdsView(frame: CGRect.zero)
     
-    @IBOutlet weak var bannerView: GADBannerView!
-    @IBOutlet var squaresCollectionView: UICollectionView!
+    var squaresCollectionView: UICollectionView!
+    var productID: NSString?
 
     override func viewDidLoad() {
+        
+        productID = "5daysubscription"
         super.viewDidLoad()
+        SKPaymentQueue.default().add(self)
         
-        bannerView.adUnitID = "ca-app-pub-9402251834571012/8922598680"
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
+        view.addSubview(stackView)
         
-        squaresCollectionView.dataSource = squaresDataSource
+        addStackView()
+        addTitleView()
+        addCollectionView()
+        addBannerView()
+        addRemoveAdsView()
+        
+        removeAdsView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: removeAdsView, action: Selector(("handleTap")))
+        tap.numberOfTapsRequired = 1
+        removeAdsView.addGestureRecognizer(tap)
+        
+        if (defaults.bool(forKey: "purchased")){
+            
+            bannerView.isHidden = true
+            removeAdsView.isHidden = true
+        }
+        else if (!defaults.bool(forKey: "stonerPurchased")){
+            print("false")
+        }
+        
+    }
+    
+    func addStackView() {
+        
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        
+        stackView.snp.makeConstraints { make in
+            make.top.equalTo(statusBarHeight)
+            make.bottom.equalTo(view.snp.bottom)
+            make.width.equalTo(view.snp.width)
+        }
+        
+        stackView.axis = .vertical
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func addTitleView() {
+        
+        stackView.addArrangedSubview(titleView)
+        
+        titleView.snp.makeConstraints { make in
+            make.height.equalTo(view.snp.height).multipliedBy(0.1)
+            make.top.equalTo(stackView.snp.top)
+            make.width.equalTo(stackView.snp.width)
+        }
+    }
+    
+    func addCollectionView() {
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 50, height: 50)
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        
+        squaresCollectionView = SquaresCollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        stackView.addArrangedSubview(squaresCollectionView)
+        
+        squaresCollectionView.delegate = squaresCollectionView as! UICollectionViewDelegate?
+        squaresCollectionView.dataSource = squaresCollectionView as! UICollectionViewDataSource?
 
+        squaresCollectionView.backgroundColor = .white
+        squaresCollectionView.showsVerticalScrollIndicator = false
+        squaresCollectionView.register(SquaresCollectionViewCell.self, forCellWithReuseIdentifier: "SquaresCollectionViewCell")
+
+        squaresCollectionView.snp.makeConstraints { make in
+            make.width.equalTo(stackView.snp.width)
+            make.top.equalTo(titleView.snp.bottom)
+        }
+        
+        squaresCollectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath)! as! SquaresCollectionViewCell
-        cell.contentView.backgroundColor! = UIColor.lightGray
-        cell.number.textColor = UIColor.black
-        collectionView.deselectItem(at: indexPath, animated: false)
+    func addBannerView() {
+        
+        stackView.addArrangedSubview(bannerView)
+        
+        bannerView.bannerView.adUnitID = "ca-app-pub-9402251834571012/8922598680"
+        bannerView.bannerView.rootViewController = self
+        bannerView.bannerView.load(GADRequest())
+        
+        bannerView.snp.makeConstraints { make in
+            make.height.equalTo(view.snp.height).multipliedBy(0.1)
+            make.top.equalTo(stackView.snp.bottom)
+            make.width.equalTo(stackView.snp.width)
+        }
+    }
+    
+    func addRemoveAdsView() {
+        
+        stackView.addArrangedSubview(removeAdsView)
+        
+        print("here")
+        
+        removeAdsView.snp.makeConstraints { make in
+            make.height.equalTo(view.snp.height).multipliedBy(0.1)
+            make.bottom.equalTo(view.snp.bottom)
+            make.width.equalTo(stackView.snp.width)
+        }
+    }
+    
+    func buyProduct(product: SKProduct){
+        print("Sending the Payment Request to Apple");
+        let payment = SKPayment(product: product)
+        SKPaymentQueue.default().add(payment);
+        
+    }
+    
+    func productsRequest (_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        let count : Int = response.products.count
+        if (count>0) {
+            let validProducts = response.products
+            let validProduct: SKProduct = validProducts[0] as SKProduct
+            if (validProduct.productIdentifier == (self.productID! as String)) {
+                print(validProduct.localizedTitle)
+                print(validProduct.localizedDescription)
+                print(validProduct.price)
+                buyProduct(product: validProduct);
+            } else {
+                print(validProduct.productIdentifier)
+            }
+        } else {
+            print("No products, eeek")
+        }
     }
     
     
+    func request(_ request: SKRequest, didFailWithError error: Error) {
+        print("Error Fetching product information");
+    }
     
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction])    {
+        print("Received Payment Transaction Response from Apple");
+        
+        for transaction:AnyObject in transactions {
+            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction{
+                switch trans.transactionState {
+                case .purchased:
+                    print("Product Purchased");
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                    defaults.set(true , forKey: "purchased")
+                    bannerView.isHidden = true
+                    removeAdsView.isHidden = true
+                    break;
+                case .failed:
+                    print("Purchased Failed");
+                    SKPaymentQueue.default().finishTransaction(transaction as! SKPaymentTransaction)
+                    break;
+                case .restored:
+                    print("Already Purchased");
+                    SKPaymentQueue.default().restoreCompletedTransactions()
+                default:
+                    break;
+                }
+            }
+        }
+    }
 }
 
 

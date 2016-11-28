@@ -22,10 +22,14 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.0)
   - GoogleToolboxForMac/NSData+zlib (2.1.0):
     - GoogleToolboxForMac/Defines (= 2.1.0)
+  - OAStackView (1.0.1)
+  - SnapKit (3.0.2)
 
 DEPENDENCIES:
   - Firebase/AdMob
   - Firebase/Core
+  - OAStackView
+  - SnapKit
 
 SPEC CHECKSUMS:
   Firebase: 387f37c7dca894a02708da9ff35ba147040eae9e
@@ -36,7 +40,9 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
+  OAStackView: 95e7cb79cbea25c2342f496a44bdbe8bd4c8d510
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
 
-PODFILE CHECKSUM: 85df021fa6bd4dfce082fdcfe63bfb14cda4b04f
+PODFILE CHECKSUM: 65057cfcc8a50ebd3ef3ccebc4884452699317bc
 
 COCOAPODS: 1.1.1
