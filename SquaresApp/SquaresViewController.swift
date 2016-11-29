@@ -25,7 +25,7 @@ class SquaresViewController: UIViewController, SKProductsRequestDelegate, SKPaym
 
     override func viewDidLoad() {
         
-        productID = "5daysubscription"
+        productID = "com.rumblewayne.SquaresApp"
         super.viewDidLoad()
         SKPaymentQueue.default().add(self)
         
@@ -38,7 +38,7 @@ class SquaresViewController: UIViewController, SKProductsRequestDelegate, SKPaym
         addRemoveAdsView()
         
         removeAdsView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: removeAdsView, action: Selector(("handleTap")))
+        let tap = UITapGestureRecognizer(target: removeAdsView, action: #selector(RemoveAdsView.handleTap))
         tap.numberOfTapsRequired = 1
         removeAdsView.addGestureRecognizer(tap)
         
@@ -120,9 +120,7 @@ class SquaresViewController: UIViewController, SKProductsRequestDelegate, SKPaym
     func addRemoveAdsView() {
         
         stackView.addArrangedSubview(removeAdsView)
-        
-        print("here")
-        
+                
         removeAdsView.snp.makeConstraints { make in
             make.height.equalTo(view.snp.height).multipliedBy(0.1)
             make.bottom.equalTo(view.snp.bottom)

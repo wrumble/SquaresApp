@@ -17,6 +17,7 @@
 		6816192C1DE5BCD4004CC55B /* SquaresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681619291DE5BCD4004CC55B /* SquaresViewController.swift */; };
 		688BF98B1DE62CCE00FBA2A7 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688BF98A1DE62CCE00FBA2A7 /* TitleView.swift */; };
 		688BF9901DE71C9C00FBA2A7 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688BF98F1DE71C9C00FBA2A7 /* BannerView.swift */; };
+		68BE3AAE1DECFB4400605251 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68BE3AAD1DECFB4400605251 /* Images.xcassets */; };
 		703147BCBA8681F9A66911D1 /* Pods_SquaresApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10F89BB8003A591A21CBD6D /* Pods_SquaresApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		681619291DE5BCD4004CC55B /* SquaresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquaresViewController.swift; sourceTree = "<group>"; };
 		688BF98A1DE62CCE00FBA2A7 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		688BF98F1DE71C9C00FBA2A7 /* BannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		68BE3AAD1DECFB4400605251 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		68FAB2A11DE61E6100FA84F4 /* OAStackView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAStackView.framework; path = "Pods/../build/Release-iphoneos/OAStackView/OAStackView.framework"; sourceTree = "<group>"; };
 		68FAB2A31DE61E6700FA84F4 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = "Pods/../build/Release-iphoneos/SnapKit/SnapKit.framework"; sourceTree = "<group>"; };
 		A10F89BB8003A591A21CBD6D /* Pods_SquaresApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SquaresApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +103,7 @@
 				6816191C1DE5BB95004CC55B /* Assets.xcassets */,
 				6816191E1DE5BB95004CC55B /* LaunchScreen.storyboard */,
 				681619211DE5BB95004CC55B /* Info.plist */,
+				68BE3AAD1DECFB4400605251 /* Images.xcassets */,
 			);
 			path = SquaresApp;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68BE3AAE1DECFB4400605251 /* Images.xcassets in Resources */,
 				681619201DE5BB95004CC55B /* LaunchScreen.storyboard in Resources */,
 				6816191D1DE5BB95004CC55B /* Assets.xcassets in Resources */,
 			);
@@ -325,9 +329,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.SquaresApp;
+				PRODUCT_NAME = SquaresApp;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -370,8 +376,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.SquaresApp;
+				PRODUCT_NAME = SquaresApp;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -385,14 +393,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = WJMTPNAAQV;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SquaresApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.SquaresApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -402,14 +413,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = WJMTPNAAQV;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = SquaresApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.SquaresApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
