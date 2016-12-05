@@ -15,6 +15,7 @@
 		6816192A1DE5BCD4004CC55B /* SquaresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681619271DE5BCD4004CC55B /* SquaresCollectionViewCell.swift */; };
 		6816192B1DE5BCD4004CC55B /* SquaresCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681619281DE5BCD4004CC55B /* SquaresCollectionView.swift */; };
 		6816192C1DE5BCD4004CC55B /* SquaresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681619291DE5BCD4004CC55B /* SquaresViewController.swift */; };
+		6832C2281DF1BCED00826360 /* PurchasesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6832C2271DF1BCED00826360 /* PurchasesHelper.swift */; };
 		688BF98B1DE62CCE00FBA2A7 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688BF98A1DE62CCE00FBA2A7 /* TitleView.swift */; };
 		688BF9901DE71C9C00FBA2A7 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688BF98F1DE71C9C00FBA2A7 /* BannerView.swift */; };
 		68BE3AAE1DECFB4400605251 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68BE3AAD1DECFB4400605251 /* Images.xcassets */; };
@@ -33,8 +34,10 @@
 		681619271DE5BCD4004CC55B /* SquaresCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquaresCollectionViewCell.swift; sourceTree = "<group>"; };
 		681619281DE5BCD4004CC55B /* SquaresCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquaresCollectionView.swift; sourceTree = "<group>"; };
 		681619291DE5BCD4004CC55B /* SquaresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquaresViewController.swift; sourceTree = "<group>"; };
+		6832C2271DF1BCED00826360 /* PurchasesHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchasesHelper.swift; sourceTree = "<group>"; };
 		688BF98A1DE62CCE00FBA2A7 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		688BF98F1DE71C9C00FBA2A7 /* BannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		68AFC2EF1DEDF8F50033BEFD /* SquaresApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SquaresApp.entitlements; sourceTree = "<group>"; };
 		68BE3AAD1DECFB4400605251 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		68FAB2A11DE61E6100FA84F4 /* OAStackView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAStackView.framework; path = "Pods/../build/Release-iphoneos/OAStackView/OAStackView.framework"; sourceTree = "<group>"; };
 		68FAB2A31DE61E6700FA84F4 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = "Pods/../build/Release-iphoneos/SnapKit/SnapKit.framework"; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		681619141DE5BB95004CC55B /* SquaresApp */ = {
 			isa = PBXGroup;
 			children = (
+				68AFC2EF1DEDF8F50033BEFD /* SquaresApp.entitlements */,
 				681619151DE5BB95004CC55B /* AppDelegate.swift */,
 				688BF98C1DE641A400FBA2A7 /* Models */,
 				688BF9891DE62C8A00FBA2A7 /* Views */,
@@ -130,6 +134,7 @@
 		688BF98C1DE641A400FBA2A7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6832C2271DF1BCED00826360 /* PurchasesHelper.swift */,
 				681619271DE5BCD4004CC55B /* SquaresCollectionViewCell.swift */,
 			);
 			name = Models;
@@ -171,9 +176,12 @@
 					681619111DE5BB95004CC55B = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = WJMTPNAAQV;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -270,6 +278,7 @@
 				6810B1761DE612F4005C5F3D /* RemoveAdsView.swift in Sources */,
 				6816192A1DE5BCD4004CC55B /* SquaresCollectionViewCell.swift in Sources */,
 				6816192B1DE5BCD4004CC55B /* SquaresCollectionView.swift in Sources */,
+				6832C2281DF1BCED00826360 /* PurchasesHelper.swift in Sources */,
 				688BF98B1DE62CCE00FBA2A7 /* TitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,8 +341,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.SquaresApp;
-				PRODUCT_NAME = SquaresApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.Squares;
+				PRODUCT_NAME = Squares;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -363,7 +372,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -378,8 +387,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.SquaresApp;
-				PRODUCT_NAME = SquaresApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.Squares;
+				PRODUCT_NAME = Squares;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -394,6 +403,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = SquaresApp/SquaresApp.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = WJMTPNAAQV;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -402,6 +412,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.SquaresApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1b043546-b287-46ee-a688-8f38d2ce0064";
+				PROVISIONING_PROFILE_SPECIFIER = wrumble;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -414,6 +426,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = SquaresApp/SquaresApp.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = WJMTPNAAQV;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -422,6 +435,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rumblewayne.SquaresApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1b043546-b287-46ee-a688-8f38d2ce0064";
+				PROVISIONING_PROFILE_SPECIFIER = wrumble;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

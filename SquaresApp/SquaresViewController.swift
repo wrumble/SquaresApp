@@ -25,7 +25,7 @@ class SquaresViewController: UIViewController, SKProductsRequestDelegate, SKPaym
 
     override func viewDidLoad() {
         
-        productID = "com.rumblewayne.SquaresApp"
+        productID = "5DayRemoval"
         super.viewDidLoad()
         SKPaymentQueue.default().add(self)
         
@@ -46,9 +46,6 @@ class SquaresViewController: UIViewController, SKProductsRequestDelegate, SKPaym
             
             bannerView.isHidden = true
             removeAdsView.isHidden = true
-        }
-        else if (!defaults.bool(forKey: "stonerPurchased")){
-            print("false")
         }
         
     }

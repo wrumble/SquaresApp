@@ -11,5 +11,6 @@ target 'SquaresApp' do
   pod 'Firebase/AdMob'
   pod 'SnapKit'
   pod 'OAStackView'
+  pod ‘Parse'
 
 end
